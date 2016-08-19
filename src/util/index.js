@@ -27,4 +27,22 @@ util.getResponseFromPost = function(options){
     )
 }
 
+/*json数据合并*/
+util.mergeJSONData = function(params,defaults){
+    params = params || {};
+    for(const def in defaults){
+        if (typeof params[def] === 'undefined') {
+            params[def] = defaults[def];
+        }
+        else if (typeof params[def] === 'object') {
+            for (var deepDef in defaults[def]) {
+                if (typeof params[def][deepDef] === 'undefined') {
+                    params[def][deepDef] = defaults[def][deepDef];
+                }
+            }
+        }
+    }
+    return params;
+}
+
 module.exports = util;
