@@ -1,8 +1,16 @@
-require("!style!css!./css/style.css")
-var React = require("react");
-var ReactDOM = require("react-dom");
+const React = require('react');
+const ReactDom = require('react-dom');
+require('!style!css!normalize.css');
+const App = require('./components/divide/index');
 
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('example')
-);
+if (module.hot) {
+    module.hot.accept();
+}
+
+ReactDom.render(
+    <App></App>,
+    document.getElementById('app')
+)
+
+
+
