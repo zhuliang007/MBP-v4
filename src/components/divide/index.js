@@ -9,12 +9,12 @@ const Divide = React.createClass({
     getInitialState:function(){
       return {
           data:{
-              /*style:{
+              style:{
                   backgroundColor:'transparent',
                   border:'none',
                   width:'inherit',
                   height:'1px'
-              }*/
+              }
           }
 
       }
@@ -23,12 +23,10 @@ const Divide = React.createClass({
         return Util.mergeJSONData(style,this.state.data.style);
     },
     componentDidMount:function(){
-        this.setState({data:this.props.data});
     },
     render:function(){
         return (
-            <div className="divide_box">
-                {this.props.data.content}
+            <div className="divide_box" style={this.changeStyle(this.props.data.style)}>
             </div>
         )
     }
