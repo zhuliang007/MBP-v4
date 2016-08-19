@@ -7,17 +7,8 @@ if (module.hot) {
     module.hot.accept();
 }
 
-const style = {
-    backgroundColor:'red',
-    height:'10px'
-}
-
-const data = {
-    style:style
-}
-
 ReactDom.render(
-    <App data={data}></App>,
+    <App></App>,
     document.getElementById('app')
 )
 
