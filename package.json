@@ -1,8 +1,12 @@
 {
   "name": "MBPV4",
   "version": "1.0.0",
-  "description": "",
+  "description": "mbp version-4 H5 more",
   "main": "enter.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhuliang007/MBP-v4.git"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "server": "node server.js",
@@ -19,7 +23,7 @@
     "babel",
     "react-transform"
   ],
-  "author": "",
+  "author": "zhuliang007",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^6.4.0",
