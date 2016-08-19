@@ -63,9 +63,12 @@
     "webpack-hot-middleware": "^2.12.2"
   },
   "dependencies": {
+    "jquery": "^3.1.0",
+    "normalize.css": "^4.2.0",
     "react": "^15.3.0",
     "react-bootstrap": "^0.30.2",
     "react-dom": "^15.3.0",
+    "react-router": "^2.6.1",
     "react-transform-hmr": "^1.0.4"
   }
 }
