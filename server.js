@@ -21,7 +21,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use('/public', express.static('public'));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'test.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(3000,'0.0.0.0', function(err) {

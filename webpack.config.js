@@ -13,7 +13,7 @@ module.exports={
   devtool:"cheap-module-eval-source-map",
   //入口文件
   entry:{
-    app:['./src/test.js']
+    app:['./src/enter.js']
   },
   //输出文件
   output: {
