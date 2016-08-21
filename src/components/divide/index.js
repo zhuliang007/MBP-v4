@@ -11,7 +11,6 @@ const Divide = React.createClass({
           data:{
               style:{
                   backgroundColor:'transparent',
-                  border:'none',
                   width:'inherit',
                   height:'0px'
               }

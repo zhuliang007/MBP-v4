@@ -7,7 +7,14 @@ const config = require('../../config/index');
 const Util = require('../../../../util/index');
 const CommonBean = require('../../commonBean/index');
 const SwipeBox = require('../../../../components/swipe/index');
+const TitlePriceBox = require('./title_price/index');
+const Divide = require('../../../../components/divide/index');
 const commonBean = new CommonBean();
+require('!style!css!./index.css');
+const serveStyle = {
+    height:'10px',
+    backgroundColor:'#C8C8C8'
+}
 const ServePage = React.createClass({
     getInitialState:function(){
         return {
@@ -37,6 +44,8 @@ const ServePage = React.createClass({
             <div className="serve_page">
                 <WXHead type={'mbp'}></WXHead>
                 <SwipeBox data={this.state.data} type={'mbp'} swipeName={'serve_swipe bg_box_4_3'}></SwipeBox>
+                <TitlePriceBox data={this.state.data}></TitlePriceBox>
+                <Divide data={{style:serveStyle}}></Divide>
             </div>
         )
     }
