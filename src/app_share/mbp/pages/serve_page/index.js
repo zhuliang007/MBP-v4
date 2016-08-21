@@ -36,7 +36,7 @@ const ServePage = React.createClass({
         return (
             <div className="serve_page">
                 <WXHead type={'mbp'}></WXHead>
-                <SwipeBox data={this.state.data.topImages} type={'mbp'} swipeName={'serve_swipe bg_box_4_3'}></SwipeBox>
+                <SwipeBox data={this.state.data} type={'mbp'} swipeName={'serve_swipe bg_box_4_3'}></SwipeBox>
             </div>
         )
     }

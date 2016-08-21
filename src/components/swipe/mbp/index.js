@@ -32,13 +32,18 @@ const MBPSwipe = React.createClass({
         }
     },
     componentDidUpdate:function(){
-        this.initSwipe(this.props.data);
+        this.initSwipe(this.props.data.topImages);
+        //console.log(this.props.data)
+        /*discountEndTime:null
+        discountStartTime:null
+        discountType:0
+        discountTypeText:null*/
     },
     render:function(){
         return (
             <div className={'swiper-container '+this.props.swipeName}>
                 <div className="swiper-wrapper">
-                    {this.setTopImages(this.props.data)}
+                    {this.setTopImages(this.props.data.topImages)}
                 </div>
                 <div className="swiper-pagination"></div>
             </div>
