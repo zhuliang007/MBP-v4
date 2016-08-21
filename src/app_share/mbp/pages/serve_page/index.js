@@ -17,7 +17,7 @@ const ServePage = React.createClass({
     initServeData:function(){
         commonBean.cmd = config.cmds.serveDetail;
         commonBean.parameters = {
-            'id':1
+            'id':this.props.serveId
         }
 
         const options = {

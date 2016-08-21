@@ -9,7 +9,7 @@ if (module.hot) {
 }
 
 ReactDom.render(
-    <App type={'mbp'}></App>,
+    <App serveId={1}></App>,
     document.getElementById('app')
 )
 
