@@ -51,7 +51,8 @@ const ServePage = React.createClass({
                 <Divide data={{style:serveStyle}}></Divide>
                 <TimeAddressBox data={this.state.data}></TimeAddressBox>
                 <Divide data={{style:serveStyle}}></Divide>
-                <UserHeadBox></UserHeadBox>
+                <UserHeadBox data={this.state.data}></UserHeadBox>
+                <Divide data={{style:serveStyle}}></Divide>
             </div>
         )
     }
