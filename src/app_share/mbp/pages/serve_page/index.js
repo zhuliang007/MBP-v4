@@ -12,6 +12,7 @@ const TimeAddressBox = require('./time_address/index');
 const UserHeadBox = require('./user_head/index');
 const Divide = require('../../../../components/divide/index');
 const commonBean = new CommonBean();
+require('!style!css!../../styles/base.css');
 require('!style!css!./index.css');
 const serveStyle = {
     height:'10px',
