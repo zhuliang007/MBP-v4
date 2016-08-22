@@ -2,8 +2,15 @@
 .tab_content_box{
     background-color: #FFFFFF;
     padding: 10px;
+    min-height: 200px;
 }
 
 .tab_content_item{
     display: block;
+}
+
+.notice_content ul{
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 10px;
 }

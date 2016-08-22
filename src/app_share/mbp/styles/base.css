@@ -34,7 +34,6 @@ a:visited{
 }
 
 ul{
+    padding: 0px;
     margin: 0px;
-    padding-left: 20px;
-    display: block;
 }
