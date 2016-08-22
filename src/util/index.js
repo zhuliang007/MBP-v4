@@ -12,6 +12,15 @@ util.isWX = function(){
     return false;
 }
 
+util.checkResponseData = function(data,key){
+    if(data){
+        if(data[key]){
+            return data[key];
+        }
+    }
+    return '';
+}
+
 /*http请求*/
 util.getResponseFromPost = function(options){
     $.ajax(

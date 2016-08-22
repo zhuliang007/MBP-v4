@@ -1,12 +1,17 @@
-require("!style!css!./css/style.css");
-var React = require("react");
-var ReactDOM = require("react-dom");
+require('!style!css!normalize.css');
+require('!style!css!./app_share/mbp/styles/base.css');
+const React = require('react');
+const ReactDom = require('react-dom');
+const App = require('./app_share/mbp/pages/serve_page/index');
 
 if (module.hot) {
   module.hot.accept();
 }
 
-ReactDOM.render(
-  <h1>Hello, sss2world!</h1>,
-  document.getElementById('example')
-);
+ReactDom.render(
+    <App serveId={1}></App>,
+    document.getElementById('app')
+)
+
+
+

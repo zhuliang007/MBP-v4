@@ -11,22 +11,21 @@ const Divide = React.createClass({
           data:{
               style:{
                   backgroundColor:'transparent',
-                  border:'none',
                   width:'inherit',
-                  height:'1px'
+                  height:'0px'
               }
           }
 
       }
     },
-    changeStyle : function(style){
-        return Util.mergeJSONData(style,this.state.data.style);
+    changeStyle : function(data){
+        return Util.mergeJSONData(data?data.style:{},this.state.data.style);
     },
     componentDidMount:function(){
     },
     render:function(){
         return (
-            <div className="divide_box" style={this.changeStyle(this.props.data.style)}>
+            <div className="divide_box" style={this.changeStyle(this.props.data)}>
             </div>
         )
     }
