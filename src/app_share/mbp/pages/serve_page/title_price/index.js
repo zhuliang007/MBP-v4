@@ -11,16 +11,9 @@ const dashedStyle = {
 }
 const TitlePriceBox = React.createClass({
     checkPriceType:function(type){
-        let typeText = ''
+        let typeText =Util.checkResponseData(this.props.data,'discountTypeText');
         let priceType = '';
-        switch (type){
-            case 1:
-                typeText = '团购价';
-                break;
-            default:
-                break;
-        }
-        if(typeText){
+        if(type){
             priceType = <span className="price_type">{typeText}</span>
         }
         return priceType;
@@ -37,13 +30,11 @@ const TitlePriceBox = React.createClass({
             <div className="title_price_box">
                 <div className="title_box">
                     {Util.checkResponseData(this.props.data,'title')}
-                    {' '}
-                    {Util.checkResponseData(this.props.data,'introduce')}
                 </div>
                 <Divide data={{style:dashedStyle}}></Divide>
                 <div className="price_box">
                     {
-                        this.checkPriceType(Util.checkResponseData(this.props.data,'type'))
+                        this.checkPriceType(Util.checkResponseData(this.props.data,'discountType'))
                     }
                     <span className="current_price">
                         {Util.checkResponseData(this.props.data,'currentPrice')}
