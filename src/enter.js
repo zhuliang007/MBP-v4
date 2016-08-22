@@ -4,7 +4,7 @@ const ReactDom = require('react-dom');
 const App = require('./app_share/mbp/pages/serve_page/index');
 
 if (module.hot) {
-    module.hot.accept();
+  module.hot.accept();
 }
 
 ReactDom.render(
