@@ -27,3 +27,14 @@ a{
 a:visited{
     background-color: transparent;
 }
+
+
+.hidden{
+    display: none;
+}
+
+ul{
+    margin: 0px;
+    padding-left: 20px;
+    display: block;
+}
