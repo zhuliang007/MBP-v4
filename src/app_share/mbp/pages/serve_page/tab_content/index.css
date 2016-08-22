@@ -1,0 +1,9 @@
+/*tab_content_box*/
+.tab_content_box{
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+
+.tab_content_item{
+    display: block;
+}
