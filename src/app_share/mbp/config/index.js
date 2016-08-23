@@ -8,6 +8,7 @@ config.debug = true;
 
 config.requestAction = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
 config.requestActionDebug = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
+//192.168.100.64:8083
 config.getRequestAction = function(){
     if(this.debug){
         return this.requestActionDebug;
@@ -37,7 +38,8 @@ config.cmds = {
     topicDetail:'smart/topic/detail',
     serveDetail:'smart/services/getServicesDetails',
     serviceEvaluate:'smart/serviceEvaluate/getPage',
-    wxJSSign:''
+    wxJSSign:'',
+    detailDetail:'smart/topic/detail'
 }
 
 config.shareTitle = '萌宝派';

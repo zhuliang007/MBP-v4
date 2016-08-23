@@ -11,7 +11,7 @@ const spotList = React.createClass({
       <div className="spotList-main">
         <div></div>
         <div >
-        <div>
+        </div>
       </div>
     )
   }
