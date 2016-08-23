@@ -5,7 +5,6 @@ const React = require('react');
 const Util = require('../../../util/index');
 const Config = require('../../../app_share/mbp/config/index');
 const CommonBean = require('../../../app_share/mbp/commonBean/index');
-const commonBean = new CommonBean();
 let flag = true;
 const JudgeContent = React.createClass({
     getInitialState:function(){
@@ -15,15 +14,15 @@ const JudgeContent = React.createClass({
     },
     initData:function(id){
         if(id&&flag){
-            commonBean.cmd = Config.cmds.serviceEvaluate;
-            commonBean.parameters = {
+            CommonBean.cmd = Config.cmds.serviceEvaluate;
+            CommonBean.parameters = {
                 'serviceId':id,
                 "numberOfPerPage": 10,
                 "pageNo": 0
             }
             const options = {
                 url:Config.getRequestAction(),
-                data:commonBean,
+                data:CommonBean,
                 success:function(result){
                     flag = false;
                     this.setState({data:result.response.data.content});
@@ -31,8 +30,6 @@ const JudgeContent = React.createClass({
             }
             Util.getResponseFromPost(options);
         }
-    },
-    componentDidMount:function(){
     },
     componentDidUpdate:function(){
         this.initData(this.props.data);

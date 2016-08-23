@@ -14,9 +14,7 @@ const AppRouter = React.createClass({
         return (
             <Router history={browserHistory}>
                 <Route path="/" component={Loading}></Route>
-                <Route path="appShare/mbp/servePage/:id" component={ServePage}>
-
-                </Route>
+                <Route path="mbpServer/:id" component={ServePage}></Route>
             </Router>
         )
     }

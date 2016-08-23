@@ -15,7 +15,6 @@ const TabBarBox = require('../../../../components/tabBar/index');
 const TabContentBox = require('./tab_content/index');
 const Divide = require('../../../../components/divide/index');
 //const UWX = require('../../../../wx/index');
-const commonBean = new CommonBean();
 require('!style!css!../../styles/base.css');
 require('!style!css!./index.css');
 const serveStyle = {
@@ -32,14 +31,14 @@ const ServePage = React.createClass({
         }
     },
     initServeData:function(){
-        commonBean.cmd = Config.cmds.serveDetail;
-        commonBean.parameters = {
+        CommonBean.cmd = Config.cmds.serveDetail;
+        CommonBean.parameters = {
             'id':this.props.params.id
         }
 
         const options = {
             url:Config.getRequestAction(),
-            data:commonBean,
+            data:CommonBean,
             success:function(result){
                 this.setState({data:result.response.data.objectData});
             }.bind(this)
