@@ -2,15 +2,47 @@
 .tab_content_box{
     background-color: #FFFFFF;
     padding: 10px;
-    min-height: 200px;
+    position: relative;
+    overflow: visible;
 }
 
 .tab_content_item{
     display: block;
+    position: relative;
+}
+
+.serve_content{
+    line-height: 20px;
+    color: #666666;
+    font-size: 14px;
+}
+
+.serve_content_item>.title{
+    font-weight: 700;
+}
+
+.serve_content_item>.content{
+    margin-top: 5px;
+}
+
+.serve_content_item>.image_content{
+    margin-top: 10px;
+}
+
+.image_content>img + img{
+    margin-top: 10px;
+}
+
+.serve_content_item + .serve_content_item{
+    margin-top: 10px;
 }
 
 .notice_content ul{
     margin: 0px;
     padding-left: 20px;
     padding-right: 10px;
+}
+
+.judge_content{
+    position: relative;
 }
