@@ -24,7 +24,7 @@ module.exports={
   //解析模块路径
   resolve: {
     //用来指定模块的后缀
-    extensions: ['', '.js', '.jsx','.css']
+    extensions: ['', '.js', '.jsx']
   },
   //loaders
   module: {
@@ -42,12 +42,13 @@ module.exports={
           //css样式
           {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!postcss-loader"),
+            exclude: /node_modules/
           },
           //less、scss样式
           {
             test: /\.less$/,
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!less-loader")
           },
           //图片文件加载,limit限制大小
           {
@@ -79,6 +80,6 @@ module.exports={
             NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },
       }),
-      new ExtractTextPlugin("bundle.css")
+      new ExtractTextPlugin("[name].[chunkhash].css"),
   ]
 };

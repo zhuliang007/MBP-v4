@@ -8,12 +8,14 @@ const Link = require('react-router').Link;
 const browserHistory = require('react-router').browserHistory;
 const Loading = require('./components/loading/index');
 const ServePage = require('./app_share/mbp/pages/serve_page/index');
+const ServePage = require('./app_share/mbp/pages/detail_page/index');
 
 const AppRouter = React.createClass({
     render:function(){
         return (
             <Router history={browserHistory}>
                 <Route path="/" component={Loading}></Route>
+                <Route path="mbpDetailPage/:id" component={DetailPage} /></Router>
                 <Route path="mbpServer/:id" component={ServePage}></Route>
             </Router>
         )
