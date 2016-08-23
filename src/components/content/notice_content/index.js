@@ -2,7 +2,6 @@
  * Created by Administrator on 2016/8/22.
  */
 const React = require('react');
-const Util = require('../../../util/index');
 const NoticeContent = React.createClass({
     initNotice:function(data){
         let notice = '<div></div>';
