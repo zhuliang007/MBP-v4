@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/8/19.
  */
-let defualtShareImage = require('../../../components/wxHead/mpb/logo.png');
+let defaultShareImage = require('../../../components/wxHead/mpb/logo.png');
 const config = {}
 
 config.debug = true;
@@ -42,7 +42,7 @@ config.cmds = {
 
 config.shareTitle = '萌宝派';
 config.shareDesc = '萌宝派';
-config.shareImage = defualtShareImage;
+config.shareImage = defaultShareImage;
 config.shareLink = window.location.href.split('#')[0];
 
 

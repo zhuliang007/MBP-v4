@@ -3,7 +3,7 @@
  */
 const React = require('react');
 const Util = require('../../../util/index');
-const config = require('../../../app_share/mbp/config/index');
+const Config = require('../../../app_share/mbp/config/index');
 const CommonBean = require('../../../app_share/mbp/commonBean/index');
 const commonBean = new CommonBean();
 let flag = true;
@@ -15,14 +15,14 @@ const JudgeContent = React.createClass({
     },
     initData:function(id){
         if(id&&flag){
-            commonBean.cmd = config.cmds.serviceEvaluate;
+            commonBean.cmd = Config.cmds.serviceEvaluate;
             commonBean.parameters = {
                 'serviceId':id,
                 "numberOfPerPage": 10,
                 "pageNo": 0
             }
             const options = {
-                url:config.getRequestAction(),
+                url:Config.getRequestAction(),
                 data:commonBean,
                 success:function(result){
                     flag = false;

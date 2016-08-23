@@ -4,7 +4,7 @@
 const React = require('react');
 const WXHead = require('../../../../components/wxHead/index');
 const WXFoot = require('../../../../components/wxFoot/index');
-const config = require('../../config/index');
+const Config = require('../../config/index');
 const Util = require('../../../../util/index');
 const CommonBean = require('../../commonBean/index');
 const SwipeBox = require('../../../../components/swipe/index');
@@ -32,13 +32,13 @@ const ServePage = React.createClass({
         }
     },
     initServeData:function(){
-        commonBean.cmd = config.cmds.serveDetail;
+        commonBean.cmd = Config.cmds.serveDetail;
         commonBean.parameters = {
             'id':this.props.params.id
         }
 
         const options = {
-            url:config.getRequestAction(),
+            url:Config.getRequestAction(),
             data:commonBean,
             success:function(result){
                 this.setState({data:result.response.data.objectData});
