@@ -39,6 +39,11 @@ util.parseTime = function(time){
     }
 }
 
+/*网络图片压缩*/
+util.compressImageFromWeb = function(url,compress){
+    return url + compress;
+}
+
 /*http请求*/
 util.getResponseFromPost = function(options){
     $.ajax(

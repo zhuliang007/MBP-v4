@@ -2,6 +2,7 @@
  * Created by Administrator on 2016/8/23.
  */
 const React = require('react');
+const Util = require('../../../../util/index');
 const ServeContentItem = React.createClass({
     initTitle:function(data){
         let title = '';
@@ -25,7 +26,7 @@ const ServeContentItem = React.createClass({
         const images = [];
         if(data){
             data.forEach(function(dataObject,index){
-                images.push(<img src={dataObject.location} className="img_auto" key={index}/>)
+                images.push(<img src={Util.compressImageFromWeb(dataObject.location,'@414w')} className="img_auto" key={index}/>)
             })
         }
         return images;

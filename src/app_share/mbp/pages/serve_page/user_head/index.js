@@ -8,12 +8,12 @@ let defaultHead = require('../../../assets/head_default.png');
 const UserHeadBox = React.createClass({
     checkUserImage:function(publicUser){
         let userImage = '';
-        let imageSrc = defaultHead;
+        let imageSrc = '';
         if(publicUser){
             if(publicUser.userSmallImg){
                 imageSrc = publicUser.userSmallImg;
             }
-            userImage = <img src={imageSrc} className="img_auto"/>
+            userImage = <img src={imageSrc?Util.compressImageFromWeb(imageSrc,'@30w'):defaultHead} className="img_auto"/>
         }
         return userImage;
     },
