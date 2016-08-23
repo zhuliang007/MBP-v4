@@ -27,3 +27,13 @@ a{
 a:visited{
     background-color: transparent;
 }
+
+
+.hidden{
+    display: none;
+}
+
+ul{
+    padding: 0px;
+    margin: 0px;
+}

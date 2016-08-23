@@ -10,6 +10,8 @@ const SwipeBox = require('../../../../components/swipe/index');
 const TitlePriceBox = require('./title_price/index');
 const TimeAddressBox = require('./time_address/index');
 const UserHeadBox = require('./user_head/index');
+const TabBarBox = require('../../../../components/tabBar/index');
+const TabContentBox = require('./tab_content/index');
 const Divide = require('../../../../components/divide/index');
 const commonBean = new CommonBean();
 require('!style!css!../../styles/base.css');
@@ -21,13 +23,16 @@ const serveStyle = {
 const ServePage = React.createClass({
     getInitialState:function(){
         return {
-            data:{}
+            data:{},
+            tabBarData: [
+                {title:'服务详情',active:true},{title:'服务须知',active:false},{title:'妈妈点评',active:false}
+            ]
         }
     },
     initServeData:function(){
         commonBean.cmd = config.cmds.serveDetail;
         commonBean.parameters = {
-            'id':this.props.serveId
+            'id':this.props.params.id
         }
 
         const options = {
@@ -42,6 +47,17 @@ const ServePage = React.createClass({
     componentDidMount:function(){
         this.initServeData();
     },
+    changeTab:function(data,dataIndex){
+        const dataObjects = [];
+        this.state.tabBarData.forEach(function(dataObject,index){
+            dataObject.active = false;
+            if(dataIndex==index){
+                dataObject.active = true;
+            }
+            dataObjects.push(dataObject);
+        });
+        this.setState({tabBarData:dataObjects});
+    },
     render:function(){
         return (
             <div className="serve_page">
@@ -51,7 +67,10 @@ const ServePage = React.createClass({
                 <Divide data={{style:serveStyle}}></Divide>
                 <TimeAddressBox data={this.state.data}></TimeAddressBox>
                 <Divide data={{style:serveStyle}}></Divide>
-                <UserHeadBox></UserHeadBox>
+                <UserHeadBox data={this.state.data}></UserHeadBox>
+                <Divide data={{style:serveStyle}}></Divide>
+                <TabBarBox data={this.state.tabBarData} changeTab={this.changeTab}></TabBarBox>
+                <TabContentBox data={this.state.data} tabData={this.state.tabBarData}></TabContentBox>
             </div>
         )
     }
