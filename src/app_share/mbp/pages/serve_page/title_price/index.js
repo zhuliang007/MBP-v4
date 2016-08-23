@@ -14,7 +14,7 @@ const TitlePriceBox = React.createClass({
         let typeText =Util.checkResponseData(this.props.data,'discountTypeText');
         let priceType = '';
         if(type){
-            priceType = <span className="price_type">{typeText}</span>
+            priceType = <span className="price_type">{typeText}价</span>
         }
         return priceType;
     },

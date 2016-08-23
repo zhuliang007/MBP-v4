@@ -4,7 +4,7 @@
 const React = require('react');
 const WXHead = require('../../../../components/wxHead/index');
 const WXFoot = require('../../../../components/wxFoot/index');
-const config = require('../../config/index');
+const Config = require('../../config/index');
 const Util = require('../../../../util/index');
 const CommonBean = require('../../commonBean/index');
 const SwipeBox = require('../../../../components/swipe/index');
@@ -15,7 +15,6 @@ const TabBarBox = require('../../../../components/tabBar/index');
 const TabContentBox = require('./tab_content/index');
 const Divide = require('../../../../components/divide/index');
 //const UWX = require('../../../../wx/index');
-const commonBean = new CommonBean();
 require('!style!css!../../styles/base.css');
 require('!style!css!./index.css');
 const serveStyle = {
@@ -32,14 +31,14 @@ const ServePage = React.createClass({
         }
     },
     initServeData:function(){
-        commonBean.cmd = config.cmds.serveDetail;
-        commonBean.parameters = {
+        CommonBean.cmd = Config.cmds.serveDetail;
+        CommonBean.parameters = {
             'id':this.props.params.id
         }
 
         const options = {
-            url:config.getRequestAction(),
-            data:commonBean,
+            url:Config.getRequestAction(),
+            data:CommonBean,
             success:function(result){
                 this.setState({data:result.response.data.objectData});
             }.bind(this)

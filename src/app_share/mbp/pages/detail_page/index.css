@@ -1,0 +1,58 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.main{
+  height: 100%;
+  width: auto;
+}
+
+.userInfo-headImg{
+  padding: 15px;
+  width: 30px;
+  height: 30px;
+  float: left;
+}
+
+.clearFloat{
+  clear:both;
+}
+
+.userInfo-wh{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.userInfo-userNike{
+  line-height: 56px;
+  float: left;
+}
+
+.rewardList-main{
+  width: 100%;
+}
+
+.rewardList-button{
+  margin-left: auto;
+  margin-right: auto;
+  height: 30px;
+  width:70px;
+  border-radius: 5px;
+  background-color: #999999;
+  text-align:center;
+}
+
+.rewardList-ds{
+  line-height: 30px;
+  color: white;
+}
+
+.spotList-main{
+  width: 100%;
+  margin-top:10px;
+  margin-bottom: 10px;
+  background-color: #C8C8C8;
+}
