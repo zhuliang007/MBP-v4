@@ -6,20 +6,17 @@ const Config = require('../../config/index');
 const Util = require('../../../../util/index');
 
 const WXHead = require('../../../../components/wxHead/index');
+const WXFoot = require('../../../../components/wxFoot/index');
 const UserInfo = require('./components/userInfo');
 const RewardList = require('./components/rewardList');
 const SpotList = require('./components/spotList');
 const ReplyList = require('./components/replyList');
+const DetailItem = require('./components/detailItem');
 
 const detailPage = React.createClass({
   getInitialState:function(){
     return {
-      id:this.props.params.id,
-      data:{},
-      userDetail:{},
-      rewardList:{},
-      spotList:{},
-      replyList:{}
+      data:null
     }
   },
   componentDidMount:function(){
@@ -28,41 +25,36 @@ const detailPage = React.createClass({
   initDetail:function(){
     CommonBean.cmd = Config.cmds.detailDetail;
     CommonBean.parameters = {
-        'id':this.state.id
+        'id':this.props.params.id
     }
 
     const options = {
         url:Config.getRequestAction(),
         data:CommonBean,
         success:function(result){
-          console.log(result)
           this.setState({
-            userDetail:result.response.data.objectData.user
-          });
-          this.setState({
-            rewardList:result.response.data.businessData.rewardList
-          });
-          this.setState({
-            spotList:result.response.data.businessData.spotList
-          });
-          this.setState({
-            spotList:result.response.data.businessData.replyList
+            data:result.response.data
           });
         }.bind(this)
     }
     Util.getResponseFromPost(options);
   },
   render:function(){
+      var list = [];
+      if(this.state.data!=null){
+        list.push(<UserInfo data={this.state.data.objectData.user} key="userInfo"></UserInfo>)
+        list.push(<DetailItem data={this.state.data} key="detailItem"></DetailItem>)
+        if(this.state.data.businessData.rewardList!=null){
+          list.push(<RewardList data={this.state.data.businessData.rewardList} key="rewardList"></RewardList>)
+        }
+        list.push(<SpotList data={this.state.data.businessData.spotList} key="spotList"></SpotList>)
+        list.push(<ReplyList data={this.state.data.businessData.replyList} key="replyList"></ReplyList>)
+      }
       return (
         <div className="main">
-          <WXHead type={'mbp'}></WXHead>
-          <UserInfo userInfo={this.state.userDetail}></UserInfo>
-          <div className="clearFloat">
-            帖子详情上半部分
-          </div>
-          <RewardList rewardList={this.state.rewardList}></RewardList>
-          <SpotList spotList={this.state.spotList}></SpotList>
-          <ReplyList replyList={this.state.replyList}></ReplyList>
+          <WXHead type={'mbp'} ></WXHead>
+          {list}
+          <WXFoot type={'mbp'}></WXFoot>
         </div>
       )
     }
