@@ -1,4 +1,5 @@
 const React = require("React");
+const Util = require('../../../../../util/index');
 
 const detailImgContext = React.createClass({
   render:function(){
@@ -10,7 +11,8 @@ const detailImgContext = React.createClass({
         ++j;
         switch (atta.extensionType) {
           case 0:
-            attaList.push(<div className="detailImg" key={atta.businessNumber+""+j}><img src={atta.location} /></div>)
+          const Util = require('../../../../../util/index');
+            attaList.push(<div className="detailImg" key={atta.businessNumber+""+j}><img src={Util.compressImageFromWeb(atta.location,"@414w")} /></div>)
             break;
           case 2:
             attaList.push(<div className="detailImg" key={atta.businessNumber+""+j}>

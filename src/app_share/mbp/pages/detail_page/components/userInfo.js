@@ -1,4 +1,5 @@
 const React = require("React");
+const Util = require('../../../../../util/index');
 
 const userInfo = React.createClass({
   render:function(){
@@ -7,7 +8,7 @@ const userInfo = React.createClass({
       <div className="userInfo-main">
         <div className="userInfo-background">
           <div className="userInfo-headImg">
-            <img src={userDetail.backgroundImg} className="userInfo-wh"/>
+            <img src={Util.compressImageFromWeb(userDetail.backgroundImg,"@30w")} className="userInfo-wh"/>
           </div>
           <div className="userInfo-userNike">
             <span>{userDetail.userNike}</span>
