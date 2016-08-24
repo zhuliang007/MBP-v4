@@ -25,6 +25,7 @@ const JudgeContent = React.createClass({
                 data:CommonBean,
                 success:function(result){
                     flag = false;
+                    console.log(result.response.data.content);
                     this.setState({data:result.response.data.content});
                 }.bind(this)
             }

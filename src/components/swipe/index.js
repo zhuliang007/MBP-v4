@@ -51,7 +51,6 @@ const SwipeBox = React.createClass({
             <div className="swipe_box">
                 {this.initSwipe(this.props.type,this.props.data)}
                 {this.initStatus(this.props.type,this.props.data)}
-                {/*<div className="status_box">距离团购结束还有1小时6分32秒</div>*/}
             </div>
         )
     }
