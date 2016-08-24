@@ -1,14 +1,26 @@
 const React = require("React");
-const CommonBean = require('../../../commonBean/index');
-const Config = require('../../../config/index');
-const Util = require('../../../../../util/index');
+const ReplyItem = require("./replyItem");
 
 const replyList = React.createClass({
   render:function(){
-    const replyList = this.props.replyList;
-    console.log(replyList);
+    const replyLists = this.props.data;
+    var listComps=replyLists.map(function(rep){
+        return <ReplyItem key={rep.id}
+        backgroundImg={rep.user.backgroundImg}
+        userNike={rep.user.userNike}
+        spotsNum={rep.spotsNum}
+        contents={rep.contents}
+        times={rep.createDate}>
+        </ReplyItem>
+    }.bind(this));
+
     return(
-      <div></div>
+      <div className="replyList-main">
+        <div className="replyList-row replyList-bottom">
+          <span>评论</span>
+        </div>
+        {listComps}
+      </div>
     )
   }
 })

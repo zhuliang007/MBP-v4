@@ -1,14 +1,8 @@
-require("!style!css!../index.css")
-
 const React = require("React");
-const CommonBean = require('../../../commonBean/index');
-const Config = require('../../../config/index');
-const Util = require('../../../../../util/index');
 
 const rewardList = React.createClass({
   render:function(){
-    const rewardList = this.props.rewardList;
-    console.log(rewardList);
+    const data = this.props.data;
     return(
       <div className="rewardList-main">
         <div >
