@@ -1,0 +1,45 @@
+/**
+ * Created by Administrator on 2016/8/19.
+ */
+const config = {}
+
+config.debug = true;
+
+config.requestAction = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
+config.requestActionDebug = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
+config.getRequestAction = function(){
+    if(this.debug){
+        return this.requestActionDebug;
+    }
+    return this.requestAction;
+}
+
+config.requestWXAction = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
+config.requestWXActionDebug = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
+config.getRequestWXAction = function(){
+    if(this.debug){
+        return this.requestWXActionDebug;
+    }
+    return this.requestWXAction;
+}
+
+config.appId = 'wx5bb398c959489ae4';
+config.appIdDebug = 'wx03fc01e909d9a654';
+config.getAppId = function(){
+    if(this.debug){
+        return this.appIdDebug;
+    }
+    return this.appId;
+}
+
+config.cmds = {
+    wxJSSign:'',
+}
+
+config.shareTitle = '萌宝派';
+config.shareDesc = '萌宝派';
+config.shareImage = '';
+config.shareLink = window.location.href.split('#')[0];
+
+
+module.exports = config;
