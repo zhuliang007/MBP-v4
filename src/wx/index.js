@@ -8,14 +8,16 @@ define(['http://res.wx.qq.com/open/js/jweixin-1.0.0.js',function(a){
 }])
 const UWX = {}
 UWX.getCommonBean = function(type) {
-    let commonBen = {};
+    let CommonBean = {};
     switch (type){
         case 'mbp':
-            const CommonBean = require('../app_share/mbp/commonBean/index');
-            commonBen = new CommonBean();
+            CommonBean = require('../app_share/mbp/commonBean/index');
+            break;
+        case 'zq_xlzl':
+            CommonBean = require('../wx_h5/zq_xlzl/commonBean/index');
             break;
     }
-    return commonBen
+    return CommonBean
 }
 
 
@@ -24,6 +26,9 @@ UWX.getConfig = function(type){
     switch (type){
         case 'mbp':
             config = require('../app_share/mbp/config/index');
+            break;
+        case 'zq_xlzl':
+            config = require('../wx_h5/zq_xlzl/config/index');
             break;
     }
     return config
