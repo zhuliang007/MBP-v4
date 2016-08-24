@@ -9,7 +9,6 @@ const browserHistory = require('react-router').browserHistory;
 const Loading = require('./components/loading/index');
 const ServePage = require('./app_share/mbp/pages/serve_page/index');
 const DetailPage = require('./app_share/mbp/pages/detail_page/index');
-const WXH5Home = require('./wx_h5/zq_xlzl/pages/home');
 
 const AppRouter = React.createClass({
     render:function(){
@@ -18,7 +17,6 @@ const AppRouter = React.createClass({
                 <Route path="/" component={Loading}></Route>
                 <Route path="mbpDetailPage/:id" component={DetailPage}></Route>
                 <Route path="mbpServer/:id" component={ServePage}></Route>
-                <Route path="WXH5Home" component={WXH5Home}></Route>
             </Router>
         )
     }

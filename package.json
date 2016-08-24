@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "server": "node server.js",
-    "build": "npm run clean && NODE_ENV=production webpack --config --progress"
+    "build": "npm run clean &&  webpack --config --progress"
   },
   "keywords": [
     "react",
