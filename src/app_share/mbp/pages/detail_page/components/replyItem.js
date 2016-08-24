@@ -1,4 +1,5 @@
 const React = require("React");
+const Util = require('../../../../../util/index');
 
 const replyItem = React.createClass({
   render:function(){
@@ -7,7 +8,7 @@ const replyItem = React.createClass({
         <div className="replyList-row">
           <div className="replyList-col-1">
             <div className="replyList-img">
-              <img src={this.props.backgroundImg}/>
+              <img src={Util.compressImageFromWeb(this.props.backgroundImg,"@30w")}/>
             </div>
             <div className="replyList-nicks">
               <span>{this.props.userNike}</span>

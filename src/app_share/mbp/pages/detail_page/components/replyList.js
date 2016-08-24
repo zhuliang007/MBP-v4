@@ -5,7 +5,7 @@ const replyList = React.createClass({
   render:function(){
     const replyLists = this.props.data;
     var listComps=replyLists.map(function(rep){
-        return <ReplyItem key="replyItem"
+        return <ReplyItem key={rep.id}
         backgroundImg={rep.user.backgroundImg}
         userNike={rep.user.userNike}
         spotsNum={rep.spotsNum}
