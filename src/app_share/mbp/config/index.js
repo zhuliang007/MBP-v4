@@ -7,7 +7,7 @@ const config = {}
 config.debug = true;
 
 config.requestAction = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
-config.requestActionDebug = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
+config.requestActionDebug = 'http://192.168.100.64:8083/wine-rest/cgi';
 //192.168.100.64:8083
 config.getRequestAction = function(){
     if(this.debug){
