@@ -7,7 +7,8 @@ const config = {}
 config.debug = true;
 
 config.requestAction = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
-config.requestActionDebug = 'http://192.168.100.64:8083/wine-rest/cgi';
+config.requestActionDebug = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
+//config.requestActionDebug = 'http://192.168.100.197:8080/cgi';
 //192.168.100.64:8083
 config.getRequestAction = function(){
     if(this.debug){
@@ -17,7 +18,7 @@ config.getRequestAction = function(){
 }
 
 config.requestWXAction = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
-config.requestWXActionDebug = 'http://erpuat.mengbp.com:8090/wine-rest/cgi';
+config.requestWXActionDebug = 'http://erpuat.mengbp.com:8090/wine-weixin-rest/cgi';
 config.getRequestWXAction = function(){
     if(this.debug){
         return this.requestWXActionDebug;
@@ -38,7 +39,7 @@ config.cmds = {
     topicDetail:'smart/topic/detail',
     serveDetail:'smart/services/getServicesDetails',
     serviceEvaluate:'smart/serviceEvaluate/getPage',
-    wxJSSign:'',
+    wxJSSign:'christ/weixin/setSign',
     detailDetail:'smart/topic/detail'
 }
 

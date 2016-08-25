@@ -17,7 +17,7 @@ const TabContentItem = React.createClass({
                     content = (<NoticeContent data={data.notice}></NoticeContent>);
                     break;
                 case 2:
-                    content = (<JudgeContent data={data.id}></JudgeContent>);
+                    content = (<JudgeContent serveId={this.props.serveId}></JudgeContent>);
                     break;
                 default:
                     break;

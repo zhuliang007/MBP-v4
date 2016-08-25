@@ -2,55 +2,21 @@
  * Created by Administrator on 2016/8/23.
  */
 const Util = require('../util/index');
-let wx;
-define(['http://res.wx.qq.com/open/js/jweixin-1.0.0.js',function(a){
-    wx = a('http://res.wx.qq.com/open/js/jweixin-1.0.0.js');
-}])
+const wx = require('weixin-js-sdk');
 const UWX = {}
-UWX.getCommonBean = function(type) {
-    let CommonBean = {};
-    switch (type){
-        case 'mbp':
-            CommonBean = require('../app_share/mbp/commonBean/index');
-            break;
-        case 'zq_xlzl':
-            CommonBean = require('../wx_h5/zq_xlzl/commonBean/index');
-            break;
-    }
-    return CommonBean
-}
 
-
-UWX.getConfig = function(type){
-    let config = {};
-    switch (type){
-        case 'mbp':
-            config = require('../app_share/mbp/config/index');
-            break;
-        case 'zq_xlzl':
-            config = require('../wx_h5/zq_xlzl/config/index');
-            break;
-    }
-    return config
-}
-
-UWX.setJSSign = function(type){
+UWX.setJSSign = function(wxOptions){
+    console.log(wxOptions)
     const self = this;
-    const config = this.getConfig(type);
-    const commonBean = this.getCommonBean(type);
-    commonBean.cmd = config.cmds.wxJSSign;
-    commonBean.parameters = {
-        "url" : window.location.href.split("#")[0]
-    }
     const options = {
-        url:config.getRequestWXAction(),
-        data:commonBean,
+        url:wxOptions.url,
+        data:wxOptions.data,
         success:function(result){
             var response = result.response;
             if(response && wx){
                 wx.config({
-                    debug : config.debug, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                    appId : config.getAppId(), // 必填，公众号的唯一标识
+                    debug : wxOptions.debug, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId : wxOptions.appId, // 必填，公众号的唯一标识
                     timestamp : response.timestamp, // 必填，生成签名的时间戳
                     nonceStr : response.nonceStr, // 必填，生成签名的随机串
                     signature :response.signature,// 必填，签名，见附录1
@@ -66,7 +32,7 @@ UWX.setJSSign = function(type){
                             "onMenuShareAppMessage",
                             "onMenuShareQQ", "onMenuShareWeibo","showMenuItems","hideMenuItems"]
                     });
-                    self.shareItems(config.shareTitle,config.shareDesc,config.shareLink,config.shareImage);
+                    self.shareItems(wxOptions.shareObject);
                 });
 
                 wx.error(function() {
@@ -77,58 +43,58 @@ UWX.setJSSign = function(type){
     Util.getResponseFromPost(options);
 }
 
-UWX.shareItems = function(title,desc,link,imgUrl){
+UWX.shareItems = function(shareObject){
     if(wx){
-        this.onMenuShareTimeline(desc,link,imgUrl);
-        this.onMenuShareAppMessage(title,desc,link,imgUrl);
-        this.onMenuShareQQ(title,desc,link,imgUrl);
-        this.onMenuShareWeibo(title,desc,link,imgUrl);
+        this.onMenuShareTimeline(shareObject);
+        this.onMenuShareAppMessage(shareObject);
+        this.onMenuShareQQ(shareObject);
+        this.onMenuShareWeibo(shareObject);
     }
 }
-UWX.onMenuShareTimeline = function(desc,link,imgUrl){//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+UWX.onMenuShareTimeline = function(shareObject){//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
     if(wx){
         wx.onMenuShareTimeline({
-            title : desc, // 分享标题
-            link : link, // 分享链接
-            imgUrl : imgUrl, // 分享图标
-            success: function () { /*用户确认分享后执行的回调函数*/ },
-            cancel: function () { /*用户取消分享后执行的回调函数*/ }
+            title : shareObject.desc, // 分享标题
+            link : shareObject.link, // 分享链接
+            imgUrl : shareObject.imgUrl, // 分享图标
+            success:shareObject.success,
+            cancel: shareObject.cancel
         });
     }
 }
-UWX.onMenuShareAppMessage = function(title,desc,link,imgUrl) { //获取“分享给朋友”按钮点击状态及自定义分享内容接口
+UWX.onMenuShareAppMessage = function(shareObject) { //获取“分享给朋友”按钮点击状态及自定义分享内容接口
     if(wx){
         wx.onMenuShareAppMessage({
-            title : title, // 分享标题
-            desc : desc, // 分享描述
-            link : link, // 分享链接
-            imgUrl : imgUrl, // 分享图标
-            success: function () { /*用户确认分享后执行的回调函数*/ },
-            cancel: function () { /*用户取消分享后执行的回调函数*/ }
+            title : shareObject.title, // 分享标题
+            desc : shareObject.desc, // 分享描述
+            link : shareObject.link, // 分享链接
+            imgUrl : shareObject.imgUrl, // 分享图标
+            success:shareObject.success,
+            cancel: shareObject.cancel
         });
     }
 }
-UWX.onMenuShareQQ = function(title,desc,link,imgUrl) { //获取“分享到QQ好友”按钮点击状态及自定义分享内容接口
+UWX.onMenuShareQQ = function(shareObject) { //获取“分享到QQ好友”按钮点击状态及自定义分享内容接口
     if(wx){
         wx.onMenuShareQQ({
-            title : title, // 分享标题
-            desc : desc, // 分享描述
-            link : link, // 分享链接
-            imgUrl : imgUrl, // 分享图标
-            success: function () { /*用户确认分享后执行的回调函数*/ },
-            cancel: function () { /*用户取消分享后执行的回调函数*/ }
+            title : shareObject.title, // 分享标题
+            desc : shareObject.desc, // 分享描述
+            link : shareObject.link, // 分享链接
+            imgUrl : shareObject.imgUrl, // 分享图标
+            success:shareObject.success,
+            cancel: shareObject.cancel
         });
     }
 }
-UWX.onMenuShareWeibo = function(title,desc,link,imgUrl){ //获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
+UWX.onMenuShareWeibo = function(shareObject){ //获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
     if(wx){
         wx.onMenuShareWeibo({
-            title : title, // 分享标题
-            desc : desc, // 分享描述
-            link : link, // 分享链接
-            imgUrl : imgUrl, // 分享图标
-            success: function () { /*用户确认分享后执行的回调函数*/ },
-            cancel: function () { /*用户取消分享后执行的回调函数*/ }
+            title : shareObject.title, // 分享标题
+            desc : shareObject.desc, // 分享描述
+            link : shareObject.link, // 分享链接
+            imgUrl : shareObject.imgUrl, // 分享图标
+            success:shareObject.success,
+            cancel: shareObject.cancel
         });
     }
 }

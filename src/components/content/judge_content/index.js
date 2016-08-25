@@ -5,6 +5,7 @@ const React = require('react');
 const Util = require('../../../util/index');
 const Config = require('../../../app_share/mbp/config/index');
 const CommonBean = require('../../../app_share/mbp/commonBean/index');
+const JudgeContentItem = require('./item/index');
 let flag = true;
 const JudgeContent = React.createClass({
     getInitialState:function(){
@@ -32,18 +33,21 @@ const JudgeContent = React.createClass({
             Util.getResponseFromPost(options);
         }
     },
-    componentDidUpdate:function(){
-        this.initData(this.props.data);
+    componentDidMount:function(){
+        this.initData(this.props.serveId);
     },
     initJudgeContent:function(data){
-        let content = '';
-        if(data&&data.length>1){
-
+        let contents = '';
+        if(data&&data.length>0){
+            contents = [];
+            data.forEach(function(content){
+               contents.push(<JudgeContentItem key={content.id} data={content}></JudgeContentItem>)
+            });
         }
         else{
-            content = (<div className="no_found_box"><span>没有找到数据</span></div>)
+            contents = (<div className="no_found_box"><span>没有找到数据</span></div>)
         }
-        return content;
+        return contents;
     },
     render:function(){
         return (

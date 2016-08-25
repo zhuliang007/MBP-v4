@@ -14,7 +14,7 @@ const UserHeadBox = require('./user_head/index');
 const TabBarBox = require('../../../../components/tabBar/index');
 const TabContentBox = require('./tab_content/index');
 const Divide = require('../../../../components/divide/index');
-//const UWX = require('../../../../wx/index');
+const UWX = require('../../../../wx/index');
 require('!style!css!../../styles/base.css');
 require('!style!css!./index.css');
 const serveStyle = {
@@ -45,7 +45,27 @@ const ServePage = React.createClass({
         }
         Util.getResponseFromPost(options);
     },
+    initWXSign:function(){
+        CommonBean.cmd = Config.cmds.wxJSSign;
+        CommonBean.parameters = {
+            'url':window.location.href.split('#')[0]
+        }
+        const wxOptions = {
+            url:Config.getRequestWXAction(),
+            data:CommonBean,
+            appId:Config.getAppId(),
+            debug:Config.debug,
+            shareObject:{
+                title:Config.shareTitle,
+                desc:Config.shareDesc,
+                imgUrl:Config.shareImage,
+                link:Config.shareLink
+            }
+        }
+        UWX.setJSSign(wxOptions);
+    },
     componentDidMount:function(){
+        //this.initWXSign();
         this.initServeData();
     },
     changeTab:function(data,dataIndex){
@@ -71,7 +91,7 @@ const ServePage = React.createClass({
                 <UserHeadBox data={this.state.data}></UserHeadBox>
                 <Divide data={{style:serveStyle}}></Divide>
                 <TabBarBox data={this.state.tabBarData} changeTab={this.changeTab}></TabBarBox>
-                <TabContentBox data={this.state.data} tabData={this.state.tabBarData}></TabContentBox>
+                <TabContentBox data={this.state.data} tabData={this.state.tabBarData} serveId={this.props.params.id}></TabContentBox>
                 <WXFoot type={'mbp'}></WXFoot>
             </div>
         )
