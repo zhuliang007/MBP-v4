@@ -45,9 +45,8 @@ const ServePage = React.createClass({
         }
         Util.getResponseFromPost(options);
     },
-    componentDidMount:function(){
-        this.initServeData();
-        /*CommonBean.cmd = Config.cmds.wxJSSign;
+    initWXSign:function(){
+        CommonBean.cmd = Config.cmds.wxJSSign;
         CommonBean.parameters = {
             'url':window.location.href.split('#')[0]
         }
@@ -63,7 +62,11 @@ const ServePage = React.createClass({
                 link:Config.shareLink
             }
         }
-        UWX.setJSSign(wxOptions);*/
+        UWX.setJSSign(wxOptions);
+    },
+    componentDidMount:function(){
+        //this.initWXSign();
+        this.initServeData();
     },
     changeTab:function(data,dataIndex){
         const dataObjects = [];

@@ -17,6 +17,42 @@ const JudgeContentItem = React.createClass({
         }
         return stars;
     },
+    initJudgeImageGroup:function(images){
+        let imageGroup = '';
+        if(images&&images.length>0){
+            imageGroup = (
+                <div className='judge_image_group'>
+                    {this.initImages(images)}
+                </div>
+            )
+        }
+        return imageGroup
+    },
+    initImages:function(images){
+        const judgeImages = [];
+        let judgeClassName = 'judge_image_item'
+        switch (images.length){
+            case 1:
+                judgeClassName = judgeClassName + ' judge_image_item_1_1'
+                break;
+            case 2:
+                judgeClassName = judgeClassName + ' judge_image_item_2_1'
+                break;
+            case 3:
+                judgeClassName = judgeClassName + ' judge_image_item_3_1'
+                break;
+        }
+        images.forEach(function(image,index){
+            const style = {
+                "backgroundImage": 'url('+ Util.compressImageFromWeb(image.location,'@414w') +')',
+                "-webkit-backgroundImage": 'url('+ Util.compressImageFromWeb(image.location,'@414w') +')'
+            }
+            judgeImages.push(
+                <div className={judgeClassName} key={index} style={style}></div>
+            )
+        })
+        return judgeImages;
+    },
     render:function(){
         return (
             <div className="judge_content_item">
@@ -38,17 +74,7 @@ const JudgeContentItem = React.createClass({
                     <div className="judge_detail">
                         {this.props.data.evaluateContent}
                     </div>
-                    <div className="judge_image_group">
-                        <div className="judge_image_item bg_box_4_3">
-                            1
-                        </div>
-                        <div className="judge_image_item bg_box_4_3">
-                            2
-                        </div>
-                        <div className="judge_image_item bg_box_4_3">
-                            3
-                        </div>
-                    </div>
+                    {this.initJudgeImageGroup(this.props.data.evaluateImages)}
                 </div>
             </div>
         )
