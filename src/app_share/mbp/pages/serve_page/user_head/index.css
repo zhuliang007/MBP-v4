@@ -11,13 +11,13 @@
     float: left;
     width: 30px;
     height: 30px;
-    background-color: red;
     border-radius: 50%;
     margin-right: 10px;
     overflow: hidden;
 }
 
-.user_name_box>span{
+.user_name{
     color: #666666;
+    font-weight: 700;
     margin-right: 10px;
 }
