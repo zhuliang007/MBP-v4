@@ -1,20 +1,44 @@
 const React = require("React");
 const DetailImgContext = require("./detailImgContext");
 const UWX = require('../../../../../wx/index');
-
+const CommonBean = require('../../../commonBean/index');
+const Config = require('../../../config/index');
 
 const detailItem=React.createClass({
-  render:function(){
+  componentWillMount：function(){
     const details = this.props.data;
     const detailList = details.objectData.imgTxtList;
-
     var img = '';
-    var listComps;
     if(detailList!=null&&detailList.length>0){
       var attachments = detailList[0].attachments;
       if(attachments!=null&&attachments.length>0){
         img =  attachments[0].location;
       }
+    }
+    CommonBean.cmd = Config.cmds.wxJSSign;
+    CommonBean.parameters = {
+        'url':window.location.href.split('#')[0]
+    }
+    const wxOptions = {
+        url:Config.getRequestWXAction(),
+        data:CommonBean,
+        appId:Config.getAppId(),
+        debug:Config.debug,
+        shareObject:{
+            title:details.objectData.title,
+            desc:details.objectData.contents,
+            imgUrl:img,
+            link:window.location.href
+        }
+    }
+    UWX.setJSSign(wxOptions);
+  },
+  render:function(){
+    const details = this.props.data;
+    const detailList = details.objectData.imgTxtList;
+    
+    var listComps;
+    if(detailList!=null&&detailList.length>0){
       var j=0;
       listComps = detailList.map(function(detail){
         ++j;
@@ -23,8 +47,6 @@ const detailItem=React.createClass({
         attachments={detail.attachments}></DetailImgContext>
       }.bind(this));
     }
-
-    UWX.shareItems(details.objectData.title,details.objectData.contents,window.location.href,img);
 
     return(
       <div className="clearFloat" key="detail">
