@@ -41,11 +41,19 @@ const ServePage = React.createClass({
             data:CommonBean,
             success:function(result){
                 this.setState({data:result.response.data.objectData});
+                console.log(result.response.data.objectData);
+                const shareObject = {
+                    title:result.response.data.objectData.title,
+                    desc:result.response.data.objectData.introduce,
+                    imgUrl:Util.compressImageFromWeb(result.response.data.objectData.topImages[0].location,'@414w'),
+                    link:Config.shareLink
+                    }
+                this.initWXSign(shareObject);
             }.bind(this)
         }
         Util.getResponseFromPost(options);
     },
-    initWXSign:function(){
+    initWXSign:function(shareObject){
         CommonBean.cmd = Config.cmds.wxJSSign;
         CommonBean.parameters = {
             'url':window.location.href.split('#')[0]
@@ -55,17 +63,11 @@ const ServePage = React.createClass({
             data:CommonBean,
             appId:Config.getAppId(),
             debug:Config.debug,
-            shareObject:{
-                title:Config.shareTitle,
-                desc:Config.shareDesc,
-                imgUrl:Config.shareImage,
-                link:Config.shareLink
-            }
+            shareObject:shareObject
         }
         UWX.setJSSign(wxOptions);
     },
     componentDidMount:function(){
-        //this.initWXSign();
         this.initServeData();
     },
     changeTab:function(data,dataIndex){

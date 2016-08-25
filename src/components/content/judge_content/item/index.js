@@ -44,8 +44,8 @@ const JudgeContentItem = React.createClass({
         }
         images.forEach(function(image,index){
             const style = {
-                "backgroundImage": 'url('+ Util.compressImageFromWeb(image.location,'@414w') +')',
-                "-webkit-backgroundImage": 'url('+ Util.compressImageFromWeb(image.location,'@414w') +')'
+                backgroundImage: 'url('+ Util.compressImageFromWeb(image.location,'@414w') +')',
+                WebkitBackgroundImage: 'url('+ Util.compressImageFromWeb(image.location,'@414w') +')'
             }
             judgeImages.push(
                 <div className={judgeClassName} key={index} style={style}></div>
