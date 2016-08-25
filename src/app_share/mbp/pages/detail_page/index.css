@@ -9,8 +9,16 @@ body{
   width: auto;
 }
 
-.userInfo-main{
+[class$="main"]{
   width: 100%;
+}
+
+[class$="headImg"]{
+  width: 30px;
+  height: 30px;
+}
+
+.userInfo-main{
   height: 60px;
   background-color: #C8C8C8;
   border-top: 1px solid #C8C8C8;
@@ -24,8 +32,6 @@ body{
 
 .userInfo-headImg{
   padding: 15px;
-  width: 30px;
-  height: 30px;
   float: left;
 }
 
@@ -44,10 +50,6 @@ body{
   float: left;
 }
 
-.rewardList-main{
-  width: 100%;
-}
-
 .rewardList-button{
   margin-left: auto;
   margin-right: auto;
@@ -64,7 +66,6 @@ body{
 }
 
 .spotList-main{
-  width: 100%;
   height: 50px;
   background-color: #C8C8C8;
 }
@@ -93,8 +94,6 @@ body{
 }
 
 .spotList-headImg{
-  width: 30px;
-  height: 30px;
   padding-right: 5px;
   padding-top:4px;
   float:right;
@@ -107,7 +106,6 @@ body{
 }
 
 .replyList-main{
-  width: 100%;
   height: 100%;
 }
 

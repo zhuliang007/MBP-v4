@@ -3,9 +3,14 @@ const React = require("React");
 const spotList = React.createClass({
   render:function(){
     var spotLists = this.props.data;
+    console.log(spotLists);
     var list=[];
     if(spotLists.length>0){
-      for(var i=spotLists.length-1;i>=0;i--){
+      var i=spotLists.length-1;
+      if(spotLists.length>5){
+        i=4
+      }
+      for(i;i>=0;i--){
          list.push(<div className="spotList-headImg" key={i}>
             <img src={spotLists[i].userSmallImg} className="spotList-Img"/>
          </div>)
