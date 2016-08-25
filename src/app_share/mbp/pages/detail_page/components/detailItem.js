@@ -5,7 +5,7 @@ const CommonBean = require('../../../commonBean/index');
 const Config = require('../../../config/index');
 
 const detailItem=React.createClass({
-  componentWillMount：function(){
+  componentWillMount:function(){
     const details = this.props.data;
     const detailList = details.objectData.imgTxtList;
     var img = '';
@@ -36,7 +36,7 @@ const detailItem=React.createClass({
   render:function(){
     const details = this.props.data;
     const detailList = details.objectData.imgTxtList;
-    
+
     var listComps;
     if(detailList!=null&&detailList.length>0){
       var j=0;
